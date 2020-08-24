@@ -15,8 +15,9 @@
     <Label text="Noticias Deportivas"></Label>
 </ActionBar>
 
-<GridLayout class="page__content">
+<StackLayout  class="page__content">
     <Label class="page__content-icon fas" text="&#xf013;"></Label>
     <Label class="page__content-placeholder" text="Noticias de Deportes"></Label>
-    <Label class="page-placeholder"  *ngfor="let s of this.Noticias.buscar()" [text]="s"></Label>
-</GridLayout>
+     <Label class="page-placeholder"  *ngFor="let s of this.noticias.buscar()" [text]="s"></Label>
+     
+</StackLayout>

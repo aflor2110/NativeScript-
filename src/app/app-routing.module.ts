@@ -11,8 +11,9 @@ const routes: Routes = [
     { path: "settings", loadChildren: () => import("~/app/settings/settings.module").then((m) => m.SettingsModule) },
     { path: "news", loadChildren: () => import("~/app/news/news.module").then((m) => m.NewsModule) },
     // tslint:disable-next-line:max-line-length
-    { path: "sportsnews", loadChildren: () => import("~/app/news/sports/sportsnews.module").then((m) => m.SportsNewsModule)
- }
+    { path: "sportsnews", loadChildren: () => import("~/app/news/sports/sportsnews.module").then((m) => m.SportsNewsModule)},
+    // tslint:disable-next-line:max-line-length
+    { path: "funcionalidad", loadChildren: () => import("~/app/featured/funcionalidad/funcionalidad.module").then((m) => m.FuncionalidadModule)}
 ];
 
 @NgModule({

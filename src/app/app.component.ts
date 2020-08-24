@@ -9,6 +9,7 @@ import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html"
+ 
 })
 export class AppComponent implements OnInit {
     private _activatedUrl: string;

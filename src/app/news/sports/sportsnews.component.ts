@@ -7,7 +7,7 @@ import { NoticiasService } from "../../domain/noticias.services";
 
 @Component({
     selector: "SpotsNews",
-    templateUrl: "./news/sportsnews.component.html"
+    templateUrl: "../sports/sportsnews.component.html"
     // providers: [NoticiasService]
 })
 export class SportsNewsComponent implements OnInit {

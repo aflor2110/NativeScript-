@@ -3,11 +3,11 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { NewsComponent } from "./news.component";
-import { SportsNewsComponent } from "./sports/sportsnews.component";
+// import { SportsNewsComponent } from "../news/sports/sportsnews.component";
 
 const routes: Routes = [
-    { path: "", component: NewsComponent },
-    { path: "sports", component: SportsNewsComponent }
+    { path: "", component: NewsComponent }
+   // { path: "sports", component: SportsNewsComponent }
 ];
 
 @NgModule({

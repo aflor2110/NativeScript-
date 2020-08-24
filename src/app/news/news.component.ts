@@ -30,9 +30,10 @@ export class NewsComponent implements OnInit {
         sideDrawer.showDrawer();
     }
     onButtonHelpTap(): void {
+        
         console.log("Click en boton de ayuda");
 
-        this.routerExtensions.navigate(["/news/sportsnews"], {
+        this.routerExtensions.navigate(["sportsnews"], {
             transition: {
                 name: "fade"
             }

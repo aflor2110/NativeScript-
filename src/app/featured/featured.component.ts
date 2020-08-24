@@ -23,9 +23,9 @@ export class FeaturedComponent implements OnInit {
         sideDrawer.showDrawer();
     }
     onBtnFuncionalidadTap(): void {
-        console.log("Click en boton de ayuda");
+        console.log("Click btn de funcionalidad");
 
-        this.routerExtensions.navigate(["/featured/funcionalidad"], {
+        this.routerExtensions.navigate(["funcionalidad"], {
             transition: {
                 name: "fade"
             }

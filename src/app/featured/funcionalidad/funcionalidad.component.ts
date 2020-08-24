@@ -6,8 +6,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { FuncionalidadService } from "../../domain/funcionalidad.services";
 
 @Component({
-    selector: "SpotsNews",
-    templateUrl: "./news/funcionalidadnews.component.html"
+    selector: "Funcionalidad",
+    templateUrl: "../funcionalidad/funcionalidad.component.html"
     // providers: [NoticiasService]
 })
 export class FuncionalidadComponent implements OnInit {
