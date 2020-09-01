@@ -18,17 +18,12 @@ export class FuncionalidadComponent implements OnInit {
 
     ngOnInit(): void {
         // Init your component properties here.
-        this.funcionalidad.agregar("Funcionalidad 1");
-        this.funcionalidad.agregar("Funcionalidad 2");
-        this.funcionalidad.agregar("Funcionalidad 3");
-        this.funcionalidad.agregar("Funcionalidad 4");
-        this.funcionalidad.agregar("Funcionalidad 5");
-
+       
     }
 
     onDrawerButtonTap(): void {
       const sideDrawer = <RadSideDrawer>app.getRootView();
       sideDrawer.showDrawer();
     }
-        
+    
 }

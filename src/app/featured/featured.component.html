@@ -18,5 +18,20 @@
 <GridLayout class="page__content">
     <Label class="page__content-icon fas" text="&#xf005;"></Label>
     <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
-    <Button text="FUNCIONALIDAD" (tap)="onBtnFuncionalidadTap()"></Button>
+    <!-- <Button text="FUNCIONALIDAD" (tap)="onBtnFuncionalidadTap()"></Button> -->
+    <StackLayout class="page__content">
+        <Label class="page__content-icon fas" text="&#xf013;"></Label>
+        
+        <ListView class="list-group" [items]="this.funcionalidad.buscar()" (itemTap)="onItemTapFunc($event)"
+            style="height:1250px">
+            <ng-template let-x="item">
+                <FlexBoxLayout flexDirection="row" class="list-group-item">
+                    <Image src="res://circulo" class="thumb img-circle"></Image>
+                    <Label [text]="x" class="list-group-item-heading" 
+                    verticalAlignment="center" style="width: 60%"></Label>
+                </FlexBoxLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+
 </GridLayout>

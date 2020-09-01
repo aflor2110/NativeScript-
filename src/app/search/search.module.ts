@@ -1,19 +1,24 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
+import { SearchFormComponent } from "./search-form.component";
 import { SearchRoutingModule } from "./search-routing.module";
 import { SearchComponent } from "./search.component";
 
-@NgModule({
+NgModule({
     imports: [
         NativeScriptCommonModule,
-        SearchRoutingModule
+        SearchRoutingModule,
+        NativeScriptFormsModule
+     
     ],
     declarations: [
-        SearchComponent
+        SearchComponent,
+        SearchFormComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
-})
+});
 export class SearchModule { }

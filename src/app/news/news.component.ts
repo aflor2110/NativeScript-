@@ -18,9 +18,10 @@ export class NewsComponent implements OnInit {
 
     ngOnInit(): void {
         // Init your component properties here.
-        this.noticias.agregar("Noticia 1");
-        this.noticias.agregar("Noticia 2");
-        this.noticias.agregar("Noticia 3");
+        this.noticias.agregar("Sports News 1");
+        this.noticias.agregar("Sports News 2");
+        this.noticias.agregar("Sports News 3");
+        this.noticias.agregar("Sports News 4");
 
         console.log(this.noticias);
     }
@@ -39,4 +40,16 @@ export class NewsComponent implements OnInit {
             }
         });
     }
+
+    onItemTapFunc(x): void {
+        console.log("Selecciono Noticia 1");
+        console.log(this.noticias);
+        console.dir(x);
+        this.routerExtensions.navigate(["sportsnews"], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
+
 }

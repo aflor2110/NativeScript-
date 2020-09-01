@@ -9,15 +9,27 @@
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
+    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
     <Label text="Noticias Deportivas"></Label>
 </ActionBar>
 
-<StackLayout  class="page__content">
+<StackLayout class="page__content">
     <Label class="page__content-icon fas" text="&#xf013;"></Label>
     <Label class="page__content-placeholder" text="Noticias de Deportes"></Label>
-     <Label class="page-placeholder"  *ngFor="let s of this.noticias.buscar()" [text]="s"></Label>
-     
+    <!-- <Label class="page-placeholder"  *ngFor="let s of this.noticias.buscar()" [text]="s"></Label> -->
+
+
 </StackLayout>
+
+<GridLayout columns="auto, *, auto" rows="auto, 25)" verticalAlignment="top" backgroundColor="lightgray">
+    <GridView class="list-group" [items]="this.noticiasDetalle.buscarDetalle()"
+        (itemTap)="onItemTapNoticiaDetalle($event)" style="height:1250px">
+        <ng-template let-item="item" let-i="index">
+            <StackLayout>
+                <Image src="res://circulo" rowspan="2" width="72" height="72" margin="3"></Image>
+                <Label [text]="item" textwrap="true" col="1" colSpan="2"></Label>
+            </StackLayout>
+        </ng-template> 
+    </GridView>
+</GridLayout>
