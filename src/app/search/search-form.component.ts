@@ -1,13 +1,16 @@
 import { Component, EventEmitter, Output, Input, OnInit } from "@angular/core";
+import { inputType } from "tns-core-modules/ui/dialogs";
 
 @Component ({
     selector: "SearchForm",
     moduleId: module.id,
-    template: `
-    <TextField [(ngModel)] = "textFieldValue" hint="Ingresar Texto......"></TextField>
-    <buttom text="Buscar" (tap)= "onButtomTap()" ></buttom>
-    `
-})
+    template: ` <FlexboxLayout flexDirection="row">
+    <TextField #texto="ngModel" [(ngModel)]="textFieldValue" hint="Ingresar Texto..." required minlen="4">
+    </TextField>
+    <Label *ngIf="texto.hasError('required')" text="*"></Label>
+    <Label *ngIf="!texto.hasError('required') && texto.hasError('minlen')" text="4+"></Label>
+    </FlexboxLayout>
+    <Button text="Buscar!" (tap)="onTapBtn()" *ngIf="texto.valid"></Button> ` })
 
 export class SearchFormComponent implements OnInit {
     textFieldValue: string = "";
@@ -20,9 +23,17 @@ export class SearchFormComponent implements OnInit {
 
     onTapBtn(): void {
         console.log("TAP");
+        console.log(this.textFieldValue);
+        if (this.textFieldValue.length > 2) {
+            this.search.emit(this.textFieldValue);
+        }
         
     }
-
+    onButtonTap(): void {
+        
+        console.log("onButtonTap");
+        
+    }
     onButtomTap(): void {
         console.log(this.textFieldValue);
         if (this.textFieldValue.length > 2) {

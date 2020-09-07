@@ -4,6 +4,7 @@ import * as app from "tns-core-modules/application";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { NoticiasService } from "../domain/noticias.services";
+import * as Toast from "nativescript-toasts";
 
 @Component({
     selector: "News",

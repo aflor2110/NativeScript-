@@ -4,6 +4,7 @@ import * as app from "tns-core-modules/application";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { NoticiasService } from "../../domain/noticias.services";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 class DataItem {
     constructor(public id: number, public name: string) { }
@@ -31,6 +32,7 @@ export class SportsNewsComponent implements OnInit {
             this.counter = i;
         }
     }
+    dolater(fn) { setTimeout(fn, 1000); }
 
     ngOnInit(): void {
         // Init your component properties here.
@@ -38,6 +40,31 @@ export class SportsNewsComponent implements OnInit {
         // this.noticiasDetalle.agregaDetalle("Comenta 2", "Aflores", "7.8");
         // this.noticiasDetalle.agregaDetalle("Comenta 3", "Aflores", "7.8");
         // this.noticiasDetalle.agregaDetalle("Comenta 4", "Aflores", "7.8");
+
+        this.dolater(() =>
+            dialogs.action("Mensaje", "Cancelar", ["Opcion1", "opcion2"])
+            .then((result) => {
+                console.log("resultado: " + result);
+                if (result === "Opcion1") {
+                    this.dolater(() =>
+                    dialogs.alert({
+                        title: "Opciones",
+                        message: "Seleccione Opcion",
+                        okButtonText: "Btn 1"
+                    }).then(() => console.log("cerrado 1")));
+                    
+                } else if (result === "Opcion2") {
+                    this.dolater(() =>
+                    
+                    dialogs.alert({
+                        title: "Aviso",
+                        message: "mansaje 1",
+                        okButtonText: "Aceptar"
+                    }).then(() => console.log("cerrado 1")));
+                }
+            }
+        
+        ));
     }
     onItemTap(args) {
         console.log("------------------------ ItemTapped: " + args.index);

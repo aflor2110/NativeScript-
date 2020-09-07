@@ -5,8 +5,9 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { SearchFormComponent } from "./search-form.component";
 import { SearchRoutingModule } from "./search-routing.module";
 import { SearchComponent } from "./search.component";
+import { MinLenDirective } from "./propio.validatos";
 
-NgModule({
+@NgModule({
     imports: [
         NativeScriptCommonModule,
         SearchRoutingModule,
@@ -15,10 +16,11 @@ NgModule({
     ],
     declarations: [
         SearchComponent,
-        SearchFormComponent
+        SearchFormComponent,
+        MinLenDirective
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
-});
+})
 export class SearchModule { }

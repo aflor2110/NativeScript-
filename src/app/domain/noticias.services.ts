@@ -9,7 +9,7 @@ agregar(s: string) {
     this.noticias.push(s);
 }
 
-buscar() {
+buscar(s: string) {
     return this.noticias;
 }
 
