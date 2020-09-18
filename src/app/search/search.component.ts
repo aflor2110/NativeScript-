@@ -1,11 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-
+import { Store } from "@ngrx/store";
 import * as app from "tns-core-modules/application";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import { NoticiasService } from "../domain/noticias.services";
 import { Color, View } from "tns-core-modules/ui/page";
 import * as Toast from "nativescript-toasts";
+import { Noticia, NuevaNoticiaAction } from ".././domain/noticias-state.module";
+import { AppState } from "../app.module";
 
 @Component({
     selector: "Search",
@@ -18,7 +20,8 @@ export class SearchComponent implements OnInit {
 
     @ViewChild("layout", {static: false}) layout: ElementRef;
 
-    constructor(private noticias: NoticiasService) {
+    constructor(private noticias: NoticiasService,
+                private store: Store<AppState>) {
         // Use the component constructor to inject providers.
     }
 
@@ -27,12 +30,20 @@ export class SearchComponent implements OnInit {
     ngOnInit(): void {
         // Init your component properties here.
         console.log("afcafc");
-        this.noticias.agregar("Noticia 1");
+        this.store.select((state) => state.noticias.sugerida)
+      .subscribe((data) => {
+          const f = data;
+          if (f != null) {
+              Toast.show({text: "Sugerimos leer: " + f.titulo, duration: Toast.DURATION.SHORT});
+              console.log("Sugerimos leer" + f.titulo);
+          }
+      });
+      /*  this.noticias.agregar("Noticia 1");
         this.noticias.agregar("Noticia 2");
         this.noticias.agregar("Noticia 3");
         this.noticias.agregar("Noticia 4");
         this.noticias.agregar("Noticia 5");
-      /*
+      
         this.dolater(() =>
             dialogs.action("Mensaje", "Cancelar", ["Opcion1", "opcion2"])
             .then((result) => {
@@ -68,7 +79,12 @@ export class SearchComponent implements OnInit {
         sideDrawer.showDrawer();
     }
 
-    onItemTap(): void {
+    onItemTap(args): void {
+        console.log("Agrego Favorito: " + args.view.bindingContext);
+        this.noticias.agregarFavorito(args.view.bindingContext);
+        
+        this.store.dispatch(new NuevaNoticiaAction(new Noticia(args.view.bindingContext)));
+
         this.dolater(() =>
             dialogs.action("Mensaje", "Cancelar", ["Opcion1", "Opcion2"])
             .then((result) => {
@@ -97,10 +113,19 @@ export class SearchComponent implements OnInit {
 
     buscarAhora(s: string) {
         console.log(this.noticias);
-        this.resultados = this.noticias.buscar(s).filter((x) => x.indexOf(s) >= 0);
-
         console.log(this.resultados);
+        // this.resultados = this.noticias.buscar(s).filter((x) => x.indexOf(s) >= 0);
         console.dir("buscarAhora: " + s);
+
+        this.noticias.buscar(s).then((r: any) => {
+            console.log("resultados buscarAhora: " , JSON.stringify(r));
+            this.resultados = r;
+            console.log("This.resultados: " + this.resultados);
+        }, (e) => {
+            console.log("error buscarAhora: " + e);
+            Toast.show({text: "error en busqueda", duration: Toast.DURATION.SHORT});
+            
+        });
 
         const layout = <View>this.layout.nativeElement;
         layout.animate({

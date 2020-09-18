@@ -5,6 +5,7 @@ import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nat
 import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
 import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
+import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
     selector: "ns-app",
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
         if (isAndroid) { const sistemaoeprativo = "android";
                          console.log(sistemaoeprativo);
                          console.log(device.os); }
+        appSettings.setString("nombreUsuario", "Antonio.Flores");
 
     }
 

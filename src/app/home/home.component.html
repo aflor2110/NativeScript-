@@ -15,15 +15,23 @@
     <Label text="Home"></Label>
 </ActionBar>
 
-<GridLayout class="page__content">
+<StackLayout class="page__content">
     <Label class="page__content-icon fas" text="&#xf015;"></Label>
     <Label class="page__content-placeholder" text="<!-- H O M E -->"></Label>
-    
+    <!-- 
     <GridLayout class="bg-primary p-15 m-15" width="200" height="200"
         (longPress) = "onLongPress($event)">
         <image class="img-rounded" src="res://circulo" stretch="none"></image>
     </GridLayout>
-
+    -->
+    <ListView class="list-group" [items]="this.updates" (itemTap)="onItemTap($event)" style="height: 1250px">
+        <ng-template let-x="item">
+            <FlexboxLayout flexDirection="row" class="list-group-item">
+                <Image src="res://circulo" class="thumb img-circle"></Image>
+                <Label [text]="x" class="list-group-item-heading" verticalAlignment="center" style="width: 30%" ></Label>
+           </FlexboxLayout>
+        </ng-template>
+    </ListView>
   
 
-</GridLayout>
+</StackLayout>

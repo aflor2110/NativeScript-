@@ -18,4 +18,14 @@
 <GridLayout class="page__content">
     <Label class="page__content-icon fas" text="&#xf013;"></Label>
     <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+    <StackLayout #layout>
+        <Label text="Nombre"></Label>
+        <TextField  [(ngModel)]="textFieldValue"  hint="Introducir Texto..."></TextField>
+      
+        <Button text="Enviar" width="20%" (tap)="onButtonTap()"></Button>
+    </StackLayout>
+
+</GridLayout>
+<GridLayout class="page__content">
+    <Button text="Editar" [nsRouterLink]="['edit']" ></Button>
 </GridLayout>

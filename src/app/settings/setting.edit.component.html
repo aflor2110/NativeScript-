@@ -1,0 +1,27 @@
+<ActionBar>
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label text="Edicion"></Label>
+</ActionBar>
+
+<StackLayout class="page__content">
+    <Label class="page__content-icon fas" text="&#xf002;"></Label>
+    <FlexboxLayout flexDirection="row">
+        <TextField #texto="ngModel" [(ngModel)]="textFieldValue" hint="Ingresar texto..." required minlen="2">
+        </TextField>
+            <Label *ngIf="texto.hasError('required')" text="*"></Label> 
+            <Label *ngIf="!texto.hasError('required') && texto.hasError('minlen')" text="4+"></Label>
+    </FlexboxLayout>
+    <Button text="Guardar" (tap)="onButtonTap()" *ngIf="texto.valid"></Button>
+</StackLayout>

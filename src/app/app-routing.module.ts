@@ -13,7 +13,8 @@ const routes: Routes = [
     // tslint:disable-next-line:max-line-length
     { path: "sportsnews", loadChildren: () => import("~/app/news/sports/sportsnews.module").then((m) => m.SportsNewsModule)},
     // tslint:disable-next-line:max-line-length
-    { path: "funcionalidad", loadChildren: () => import("~/app/featured/funcionalidad/funcionalidad.module").then((m) => m.FuncionalidadModule)}
+    { path: "funcionalidad", loadChildren: () => import("~/app/featured/funcionalidad/funcionalidad.module").then((m) => m.FuncionalidadModule)},
+    { path: "favoritos", loadChildren: () => import("~/app/favoritos/favoritos.module").then((m) => m.FavoritosModule) }
 ];
 
 @NgModule({
