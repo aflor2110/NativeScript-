@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "84566060049",
+    "firebase_url": "https://courseraapp-32c82.firebaseio.com",
+    "project_id": "courseraapp-32c82",
+    "storage_bucket": "courseraapp-32c82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84566060049:android:e4c655016804362bcd95b0",
+        "android_client_info": {
+          "package_name": "CourseraApp_2020.Afc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84566060049-b7t2vgepprjegti1g0kru1b2dtno0tf6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO59GNqTynOyMZjMt4AczsqRKAjz6B1iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84566060049-b7t2vgepprjegti1g0kru1b2dtno0tf6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
