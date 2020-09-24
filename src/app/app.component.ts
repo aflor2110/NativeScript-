@@ -6,6 +6,9 @@ import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
 import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import * as appSettings from "tns-core-modules/application-settings";
+const firebase = require("nativescript-plugin-firebase");
+import { Message } from "nativescript-plugin-firebase";
+import * as Toast from "nativescript-toasts";
 
 @Component({
     selector: "ns-app",
@@ -32,6 +35,19 @@ export class AppComponent implements OnInit {
                          console.log(sistemaoeprativo);
                          console.log(device.os); }
         appSettings.setString("nombreUsuario", "Antonio.Flores");
+
+        firebase.init({
+            onMessageReceivedCallback: (message: Message) => {
+                // tslint:disable-next-line:no-invalid-template-strings
+                console.log(`titulo: ${message.title}`);
+                console.log(`cuerpo: ${message.body}`);
+                console.log(`data: ${JSON.stringify(message.data)}`);
+                Toast.show({text: "Notificacion: " + message.title, duration: Toast.DURATION.SHORT});
+            },
+            onPushTokenReceivedCallback: (token) => console.log("firebase push token: " + token)
+        }).then(
+            () => console.log("firebase.init done"),
+            (error) => console.log(`firebse.init error: ${error}`));
 
     }
 
